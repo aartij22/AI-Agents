@@ -1,0 +1,5 @@
+google-api-python-client
+fastmcp
+llama_stack_client
+streamlit
+google_auth_oauthlib
