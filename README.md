@@ -26,14 +26,14 @@ ollama run llama3.2:3b --keepalive 60m
 ```
 
 ### 1.2 Set Up Python Environment
-Create a virtual environment and install dependencies using uv (or pip as an alternative):
+Create a virtual environment and install uv:
 
 ```bash
 python3 -m venv agent_venv
 source agent_venv/bin/activate
 
 pip install uv
-uv pip install -r requirements.txt
+pip install -r requirements.txt
 ```
 📄 requirements.txt contains all necessary Python dependencies.
 
@@ -55,7 +55,7 @@ Once authentication is complete, start the custom MCP server:
 python3 gdrive_tools.py
 ```
 ## 🛠️ Step 4: Add Your Custom Function Tool
-Create your own custom tool functions and register them with the agent. Refer to the example provided in api/summariser_custom_tool.py.
+Create your own custom tool functions and register them with the agent. Refer to the example provided in [api/summariser_custom_tool.py](https://github.com/aartij22/AI-Agents/blob/main/api/summariser_custom_tool.py).
 
 ## 🎛️ Step 5: Run the Streamlit App
 Use the following command to start the web UI:
