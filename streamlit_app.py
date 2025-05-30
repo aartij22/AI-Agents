@@ -1,6 +1,6 @@
 import streamlit_app as st
-from api.summariser_custom_tool import generate_summary
 from llama_stack_client import Agent, LlamaStackClient
+from api.summariser_custom_tool import summarize_context
 from llama_stack_client.types.tool_group import McpEndpoint
 
 def api_calling(user_prompt):
@@ -12,8 +12,8 @@ def api_calling(user_prompt):
     return response_stream
 
 # --- Initialization ---
-st.set_page_config(page_title="PIA Agent", page_icon="🤖")
-st.title("🤖 PIA Agent")
+st.set_page_config(page_title="Meeting Agent", page_icon="🤖")
+st.title("🤖 Meeting Agent")
 
 # --- Session state ---
 if "client" not in st.session_state:
@@ -21,7 +21,7 @@ if "client" not in st.session_state:
     st.session_state.client.toolgroups.register(
         toolgroup_id="mcp::gdrive",
         provider_id="model-context-protocol",
-        mcp_endpoint=McpEndpoint(uri="http://0.0.0.0:3001/sse"),
+        mcp_endpoint=McpEndpoint(uri="http://0.0.0.0:3002/sse"),
     )
 
 if "agent" not in st.session_state:
@@ -29,7 +29,7 @@ if "agent" not in st.session_state:
         st.session_state.client,
         model="llama3.2:3b",
         instructions="You are a helpful assistant that can use tools to answer questions.",
-        tools=["mcp::gdrive", generate_summary],
+        tools=["mcp::gdrive", summarize_context],
         enable_session_persistence=True
     )
 
