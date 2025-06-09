@@ -57,7 +57,7 @@ gdrive_service = get_drive_service(client_secret_path='')
 
 
 @mcp.tool()
-def create_google_doc(title: str, content, folder_id: str = None) -> dict:
+def create_google_doc(session_id: str, title: str, content, folder_id: str = None) -> dict:
     """
     Create a new Google Docs document with the specified title and content.
 
@@ -90,7 +90,7 @@ def create_google_doc(title: str, content, folder_id: str = None) -> dict:
 
 
 @mcp.tool()
-def share_google_doc(file_id: str, email: str, role: str = "writer") -> None:
+def share_google_doc(session_id: str, file_id: str, email: str, role: str = "writer") -> None:
     """
     Share a Google Doc file with a specified user by email with a given access role.
 
@@ -110,7 +110,7 @@ def share_google_doc(file_id: str, email: str, role: str = "writer") -> None:
 
 
 @mcp.tool()
-def read_google_doc(file_url: str) -> str:
+def read_google_doc(session_id: str, file_url: str) -> str:
     """
     Reads the content of a Google Docs or plain text file from Google Drive.
 
